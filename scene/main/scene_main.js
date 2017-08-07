@@ -11,7 +11,7 @@ class Scene extends BaseScene{
         this.addElement(this.bg)
         this.addElement(this.ground)
         this.bird.x = 200
-        this.bird.y = 100
+        this.bird.y = 300
         this.addElement(this.bird)
 
         this.game.registerActions('w', () => {

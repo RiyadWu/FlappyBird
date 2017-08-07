@@ -9,6 +9,7 @@ class Bird extends GameAnimation {
         this.speed = 12
         this.groundHeight = 504
         this.rotation = 0
+        this.alpha = 1
     }
 
     update() {
@@ -21,6 +22,10 @@ class Bird extends GameAnimation {
         this.rotation += 5
         if (this.rotation > 45) {
             this.rotation = 45
+        }
+
+        if (this.alpha > 0) {
+            this.alpha -= 0.05
         }
         super.update()
     }
@@ -35,7 +40,7 @@ class Bird extends GameAnimation {
         const h2 = this.y + this.h / 2
 
         context.translate(w2, h2)
-
+        context.globalAlpha = this.alpha
         context.rotate(this.rotation * Math.PI / 180 )
 
         context.translate(-w1, -h1)
@@ -45,6 +50,7 @@ class Bird extends GameAnimation {
     }
 
     fly() {
+        this.alpha = 1
         this.rotation = -45
         this.vy = 0
         this.y -= this.speed
