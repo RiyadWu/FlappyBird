@@ -15,7 +15,7 @@ class Bird extends GameAnimation {
     update() {
         this.y += this.vy
         this.vy += this.gy / this.game.config.fps
-        const gh = this.groundHeight
+        const gh = this.groundHeight - this.h
         if (this.y > gh) {
             this.y = gh
         }
