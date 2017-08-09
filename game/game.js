@@ -4,20 +4,13 @@ class Game {
         this.scene = null
         this.actions = {}
         this.keysDowns = {}
-        this.images = {}
-        this.config = {
-            pause: false,
-            debug: false,
-            fps: 30,
-            images : {
-                bird1: 'img/bird1.png',
-                bird2: 'img/bird2.png',
-                bird3: 'img/bird3.png',
-                ground: 'img/ground.png',
-                pipe: 'img/pipe.png',
-                background: 'img/bg.png',
-            },
-            backgroundSpeed: 2,
+        this.images = {
+            bird1: 'img/bird1.png',
+            bird2: 'img/bird2.png',
+            bird3: 'img/bird3.png',
+            ground: 'img/ground.png',
+            pipe: 'img/pipe.png',
+            background: 'img/bg.png',
         }
         this.__setup()
     }
@@ -43,7 +36,7 @@ class Game {
     }
 
     update() {
-        if  (!this.config.pause) {
+        if  (!config.pause) {
             this.scene.update()
         }
     }
@@ -72,7 +65,7 @@ class Game {
         this.scene = scene
         setTimeout(() => {
             this.runLoop()
-        }, 1000 / this.config.fps)
+        }, 1000 / config.range.fps.value)
     }
 
     runLoop() {
@@ -90,7 +83,7 @@ class Game {
 
         setTimeout(() => {
             this.runLoop()
-        }, 1000 / this.config.fps)
+        }, 1000 / config.range.fps.value)
     }
 
     run() {
@@ -99,7 +92,7 @@ class Game {
 
     __loadAllImg() {
         let successNum = 0
-        const images = this.config.images
+        const images = this.images
         const names = Object.keys(images)
         names.forEach(k => {
             let path = images[k]

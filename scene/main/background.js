@@ -24,7 +24,7 @@ class Background {
     }
 
     update() {
-        this.middle.x -= this.game.config.backgroundSpeed
+        this.middle.x -= config.range.backgroundSpeed.value
         if (this.middle.x <= -this.middle.w) {
             this.middle.x = 0
         }

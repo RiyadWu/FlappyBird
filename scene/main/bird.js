@@ -6,7 +6,6 @@ class Bird extends GameAnimation {
         super(game, name, framesLength)
         this.gy = 10
         this.vy = 0
-        this.speed = 12
         this.groundHeight = 504
         this.rotation = 0
         this.alpha = 1
@@ -14,7 +13,7 @@ class Bird extends GameAnimation {
 
     update() {
         this.y += this.vy
-        this.vy += this.gy / this.game.config.fps
+        this.vy += this.gy / config.range.fps.value
         const gh = this.groundHeight - this.h
         if (this.y > gh) {
             this.y = gh
@@ -53,6 +52,6 @@ class Bird extends GameAnimation {
         this.alpha = 1
         this.rotation = -45
         this.vy = 0
-        this.y -= this.speed
+        this.y -= config.range.birdSpeed.value
     }
 }
