@@ -51,7 +51,8 @@ const __main = () => {
 
         enableDebug(g)
 
-        const scene = new Scene(g)
+        // const scene = new Scene(g)
+        const scene = new Title(g)
 
         g.runWithScene(scene)
 

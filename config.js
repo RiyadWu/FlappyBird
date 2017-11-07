@@ -1,6 +1,8 @@
 const config = {
     pause: false,
     debug: false,
+    medalLevel1: 10,
+    medalLevel2: 20,
     range:{
         fps: {
             value: 30,
@@ -21,21 +23,21 @@ const config = {
             text: '管子个数',
         },
         horizontalSpacing: {
-            value: 100,
+            value: 200,
             min: 100,
             max: 300,
             text: '管子水平间距',
         },
         verticalSpacing: {
-            value: 100,
-            min: 100,
-            max: 150,
+            value: 150,
+            min: 120,
+            max: 170,
             text: '管子垂直间距',
         },
         birdSpeed: {
-            value: 30,
-            min: 10,
-            max: 100,
+            value: 10,
+            min: 1,
+            max: 15,
             text: '小鸟速度',
         },
     },

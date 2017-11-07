@@ -9,16 +9,20 @@ class Bird extends GameAnimation {
         this.groundHeight = 504
         this.rotation = 0
         this.alpha = 1
+        this.rotationChange = 5
+        this.minHeight = this.groundHeight - this.h
+        this.x = 120
+        this.y = 220
     }
 
     update() {
         this.y += this.vy
         this.vy += this.gy / config.range.fps.value
-        const gh = this.groundHeight - this.h
-        if (this.y > gh) {
-            this.y = gh
+        const minHeight = this.minHeight
+        if (this.y > minHeight) {
+            this.y = minHeight
         }
-        this.rotation += 5
+        this.rotation += this.rotationChange
         if (this.rotation > 45) {
             this.rotation = 45
         }

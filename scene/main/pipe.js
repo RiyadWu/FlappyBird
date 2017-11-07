@@ -7,8 +7,8 @@ class Pipes {
 
     __setup() {
         for (let i = 0; i < config.range.pipeNum.value; i++) {
-            const pairPipe = new PairPipes(this.game)
-            pairPipe.x = 300 + i *  config.range.horizontalSpacing.value
+            const x = 300 + i *  config.range.horizontalSpacing.value
+            const pairPipe = new PairPipes(this.game, x)
             this.pipes.push(pairPipe)
         }
     }
@@ -19,6 +19,7 @@ class Pipes {
             if (!p.alive) {
                 p.alive = true
                 p.x = this.__tailX() + config.range.horizontalSpacing.value
+                p.scored = false
             }
         }
 
@@ -35,6 +36,24 @@ class Pipes {
 
     __tailX() {
         return this.pipes.map(p => p.x).sort((a, b) => a - b).pop()
+    }
+
+    checkCollision(bird) {
+        for (let pipe of this.pipes) {
+            if (pipe.checkCollision(bird)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    updateScore(bird, score) {
+        for (let pipe of this.pipes) {
+            if (!pipe.scored && pipe.x + pipe.w < bird.x) {
+                score.score++
+                pipe.scored = true
+            }
+        }
     }
 
     draw() {

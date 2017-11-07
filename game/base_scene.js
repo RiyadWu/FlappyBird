@@ -15,6 +15,10 @@ class BaseScene {
         this.elements.forEach(e => e.update())
     }
 
+    destroy() {
+
+    }
+
     addElement(element) {
         this.elements.push(element)
     }

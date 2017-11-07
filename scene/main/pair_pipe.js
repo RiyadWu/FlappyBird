@@ -1,8 +1,10 @@
 class PairPipes {
-    constructor(game) {
+    constructor(game, x) {
         this.game = game
+        this.x = x
         this.rotation = 0
         this.alive = true
+        this.scored = false
         this.__setup()
     }
 
@@ -10,12 +12,12 @@ class PairPipes {
         const p1 = new GameImage(this.game, 'pipe')
         p1.x = this.x
         p1.rotation = 180
+        this.w = p1.w
         const p2 = new GameImage(this.game, 'pipe')
         p2.x = this.x
         this.resetPosition(p1, p2)
         this.pipeAbove = p1
         this.pipeBelow = p2
-
     }
 
     resetPosition(pipeAbove, pipeBelow) {
@@ -32,6 +34,13 @@ class PairPipes {
         this.alive = false
     }
 
+    __collide(bird, pipe) {
+        return collide(bird, pipe) || collide(pipe, bird)
+    }
+
+    checkCollision(bird) {
+        return this.__collide(bird, this.pipeAbove) || this.__collide(bird, this.pipeBelow)
+    }
 
     update() {
         this.x -= config.range.backgroundSpeed.value
